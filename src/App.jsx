@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoProvider } from "./context/TodoContext";
 
 function App() {
@@ -34,6 +34,15 @@ function App() {
       )
     );
   };
+
+  useEffect(() => {
+    const fetchedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (fetchedTodos && fetchedTodos.length > 0) setTodos(fetchedTodos);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <TodoProvider
