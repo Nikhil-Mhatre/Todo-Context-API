@@ -1,6 +1,14 @@
+import { useState } from "react";
 import { TodoProvider } from "./context/TodoContext";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  const addNewTodo = (newTodo) => {
+    // This method takes TodoObject as argument
+    setTodos((prevTodo) => [...prevTodo, newTodo]);
+  };
+
   return (
     <TodoProvider
       value={{ todos, addNewTodo, deleteTodo, updateTodo, toggleComplete }}
