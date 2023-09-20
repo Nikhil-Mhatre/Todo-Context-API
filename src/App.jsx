@@ -9,6 +9,12 @@ function App() {
     setTodos((prevTodo) => [...prevTodo, newTodo]);
   };
 
+  const deleteTodo = (id) => {
+    setTodos((prevTodo) =>
+      prevTodo.filter((currentTodo) => currentTodo.id !== id)
+    );
+  };
+
   return (
     <TodoProvider
       value={{ todos, addNewTodo, deleteTodo, updateTodo, toggleComplete }}
