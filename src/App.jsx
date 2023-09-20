@@ -25,6 +25,16 @@ function App() {
     );
   };
 
+  const toggleComplete = (id) => {
+    setTodos((prevTodo) =>
+      prevTodo.map((currentTodo) =>
+        currentTodo.id === id
+          ? { ...currentTodo, completed: !currentTodo.completed }
+          : currentTodo
+      )
+    );
+  };
+
   return (
     <TodoProvider
       value={{ todos, addNewTodo, deleteTodo, updateTodo, toggleComplete }}
