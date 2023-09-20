@@ -15,6 +15,16 @@ function App() {
     );
   };
 
+  const updateTodo = (id, newMsg) => {
+    setTodos((prevTodo) =>
+      prevTodo.map((currentTodo) =>
+        currentTodo.id === id
+          ? { ...currentTodo, message: newMsg }
+          : currentTodo
+      )
+    );
+  };
+
   return (
     <TodoProvider
       value={{ todos, addNewTodo, deleteTodo, updateTodo, toggleComplete }}
